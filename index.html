@@ -464,7 +464,7 @@ const CONFIG = {
       site:"https://www.indigoshop.it", brands:"https://www.indigoshop.it/it/page/elenco-marche.html",
       instagram:"https://www.instagram.com/indigo_essential/", facebook:"https://www.facebook.com/inDigoOutletMartinaFranca/", linkedin:"https://www.linkedin.com/company/indigo-surl/",
       story:"inDigo After & Essential è il negozio della moda essenziale uomo e donna: fit attuali, prezzi accessibili e il miglior rapporto qualità/prezzo, con i brand del gruppo Bestseller come Jack & Jones, Only, JJXX e Pieces.",
-      photos:[], satClose:"21:00" }
+      photos:["photos/indigo/01.webp","photos/indigo/02.webp","photos/indigo/03.webp","photos/indigo/04.webp","photos/indigo/05.webp","photos/indigo/06.webp","photos/indigo/07.webp","photos/indigo/08.webp"], satClose:"21:00" }
   ],
 
   // Banner home (si aggiornano qui). Niente prezzi/sconti senza conferma.
@@ -556,7 +556,7 @@ function hoursTable(store){
 }
 
 /* ===================== AGGIORNAMENTO AUTOMATICO ===================== */
-const APP_VERSION="20261123151009";
+const APP_VERSION="20261123151356";
 let lastCheck=0, updating=false;
 async function checkUpdate(force){
   if(updating) return false;
