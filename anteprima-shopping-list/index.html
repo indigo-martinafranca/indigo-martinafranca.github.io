@@ -596,7 +596,7 @@ function hoursTable(store){
 }
 
 /* ===================== AGGIORNAMENTO AUTOMATICO ===================== */
-const APP_VERSION="20261123175051";
+const APP_VERSION="20261123175144";
 let lastCheck=0, updating=false;
 async function checkUpdate(force){
   if(updating) return false;
@@ -955,7 +955,7 @@ function vShopping(){
   const st=SL.stores.map(id=>CONFIG.stores.find(s=>s.id===id)).filter(Boolean);
   return `${navbar()}<header class="sub-top sl-top"><span class="sl-k">Shopping List Natale 2026</span><h1>Prima acquisti, più risparmi</h1><p>Ritirala nei nostri punti vendita</p></header>
   <section>
-    <button class="sl-gold" onclick="document.getElementById('slSheet').classList.add('on')"><i>👉</i><span>PRENOTALA ORA!</span></button>
+    <button class="sl-gold" onclick="document.getElementById('slSheet').classList.add('on')"><i>👉🏻</i><span>PRENOTALA ORA!</span></button>
     <div class="gal sl-gal"><img src="photos/sl/fronte.webp" alt="Shopping List 2026 - fronte"><img src="photos/sl/retro.webp" alt="Shopping List 2026 - retro"></div>
     <div class="sl-hint">Tocca per ingrandire fronte e retro</div>
     <div class="sl-tiers">
