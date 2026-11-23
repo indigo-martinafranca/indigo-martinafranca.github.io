@@ -266,7 +266,7 @@ nav.tabs a.reg-tab{color:#128C4B}
 .slide .slic{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:116px;height:116px;z-index:1}.slide .slic svg{width:100%;height:100%}
 .slide.sl .slic svg{width:118px;height:auto}
 .slide.sl h3{font-size:21px;line-height:1.12}
-.slide.sl{padding-right:128px}.slide.sl .slimg,.slide.sl .slimg2{position:absolute!important;top:50%;width:92px;height:auto;border-radius:6px;box-shadow:0 10px 22px rgba(40,0,0,.5);border:2px solid rgba(255,255,255,.85)}
+.slide.sl{padding:18px 128px 18px 20px!important;justify-content:center}.slide.sl .tag{position:relative!important;top:auto;left:auto;align-self:flex-start;margin-bottom:10px}.slide.sl p{margin:0 0 14px!important;padding:0!important;align-self:flex-start;text-indent:0}.slide.sl .cta{align-self:flex-start}.slide.sl .slimg,.slide.sl .slimg2{position:absolute!important;top:50%;width:92px;height:auto;border-radius:6px;box-shadow:0 10px 22px rgba(40,0,0,.5);border:2px solid rgba(255,255,255,.85)}
 .slide.sl .slimg{right:30px;transform:translateY(-44%) rotate(-7deg);z-index:3}
 .slide.sl .slimg2{right:8px;transform:translateY(-58%) rotate(8deg);z-index:2;opacity:.95}
 .sl-top{background:linear-gradient(135deg,#7A0F1C,#B3202F 60%,#D63A45)!important}.sl-k{display:inline-block;background:#fff;color:#A3202D;font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;padding:5px 10px;border-radius:99px;margin:6px 0 10px}
@@ -286,6 +286,15 @@ nav.tabs a.reg-tab{color:#128C4B}
 .sl-tiers small{text-align:center;font-size:13px;font-weight:600;opacity:.95;margin-top:2px}
 .sl-st:last-child:nth-child(odd){grid-column:span 2}.sl-st:last-child:nth-child(odd) .lg{aspect-ratio:32/10}
 .sl-legal{font-size:11px;color:#999;text-align:center;line-height:1.45;margin-top:14px}
+.sl-gold{display:block;width:100%;border:0;margin:0 0 16px;padding:18px;border-radius:18px;font-family:inherit;font-size:23px;font-weight:800;line-height:1;letter-spacing:1px;color:#5A1A00;background:linear-gradient(135deg,#F9E29C,#E2B24A 45%,#C8922A 70%,#F6D98A);box-shadow:0 8px 22px rgba(200,146,42,.45);cursor:pointer;animation:slp 1.6s ease-in-out infinite}
+@keyframes slp{0%,100%{transform:scale(1);box-shadow:0 8px 22px rgba(200,146,42,.45)}50%{transform:scale(1.04);box-shadow:0 10px 32px rgba(226,178,74,.75)}}
+.sl-sheet{position:fixed;inset:0;z-index:998;background:rgba(0,0,0,.6);display:none;align-items:flex-end;justify-content:center}.sl-sheet.on{display:flex}
+.sl-pan{position:relative;background:var(--bg,#F4F6F9);width:100%;max-width:560px;max-height:88vh;overflow:auto;border-radius:24px 24px 0 0;padding:22px 16px calc(20px + env(safe-area-inset-bottom));animation:slu .25s ease-out}
+@keyframes slu{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.sl-pan h2{text-align:center;font-size:21px;font-weight:800;color:#B3202F;margin:4px 30px 16px}.sl-pan .x{position:absolute;top:12px;right:16px;font-size:30px;line-height:1;cursor:pointer;color:#888}
+.sl-xg{display:grid;grid-template-columns:1fr 1fr;gap:12px}.sl-xg a{display:block;border-radius:16px;overflow:hidden;background:#8B0000;box-shadow:0 6px 16px rgba(0,0,0,.18);color:#fff}
+.sl-xg img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}.sl-xg a:last-child:nth-child(odd){grid-column:span 2}.sl-xg a:last-child:nth-child(odd) img{aspect-ratio:2/1}
+.sl-xg span{display:flex;align-items:center;justify-content:center;gap:6px;background:var(--wa);font-size:12.5px;font-weight:800;padding:9px 4px}.sl-xg span svg{width:15px;height:15px}
 .sl-note{text-align:center;font-size:12.5px;color:#777;margin-top:14px}
 .slide.xmas,.slide.wab{padding-right:140px}
 .slide.xmas>*:not(.slic),.slide.wab>*:not(.slic){position:relative;z-index:2}.slide.xmas .tag,.slide.wab .tag{position:absolute}
@@ -582,7 +591,7 @@ function hoursTable(store){
 }
 
 /* ===================== AGGIORNAMENTO AUTOMATICO ===================== */
-const APP_VERSION="20261123172409";
+const APP_VERSION="20261123174038";
 let lastCheck=0, updating=false;
 async function checkUpdate(force){
   if(updating) return false;
@@ -941,6 +950,7 @@ function vShopping(){
   const st=SL.stores.map(id=>CONFIG.stores.find(s=>s.id===id)).filter(Boolean);
   return `${navbar()}<header class="sub-top sl-top"><span class="sl-k">Shopping List Natale 2026</span><h1>Prima acquisti, più risparmi</h1><p>Ritirala nei nostri punti vendita</p></header>
   <section>
+    <button class="sl-gold" onclick="document.getElementById('slSheet').classList.add('on')">PRENOTALA ORA!</button>
     <div class="gal sl-gal"><img src="photos/sl/fronte.webp" alt="Shopping List 2026 - fronte"><img src="photos/sl/retro.webp" alt="Shopping List 2026 - retro"></div>
     <div class="sl-hint">Tocca per ingrandire fronte e retro</div>
     <div class="sl-tiers">
@@ -955,13 +965,14 @@ function vShopping(){
       <div><i>✅</i><p><b>Attendi la nostra conferma</b>Prima di passare in negozio attendi la conferma, che ti invieremo entro 24 ore dalla richiesta.</p></div>
       <a href="#calendario"><i>📅</i><p><b>Aperture domenicali prenatalizie</b>Domenica 6, 13 e 20 dicembre. Orari nel calendario →</p></a>
     </div>
-    <div class="sl-cta"><h2>PRENOTALA ORA!</h2><p>In che negozio vuoi ritirarla?</p></div>
-    <div class="sl-grid">${st.map(s=>{const w=s.whatsapp?"https://wa.me/"+s.whatsapp+"?text="+encodeURIComponent(SL.text):"#";
-      return `<a class="sl-st" href="${w}" target="_blank" rel="noopener"><div class="lg" style="background:${s.logobg||"#111"}"><img src="${s.logo}" alt="${s.name}"></div><b>${s.short}</b><span class="wab">${I.wa}Prenota su WhatsApp</span></a>`;}).join("")}</div>
-    <div class="sl-note">Nel messaggio WhatsApp sostituisci <b>(Nome e Cognome)</b> con i tuoi dati.</div>
-    <div class="sl-legal">Promozione individuale, non cumulabile con altre promozioni e non cedibile a terzi. Non utilizzabile sugli articoli in promozione; rilasciata solo ai clienti registrati. Scadenza 18/12/2026. inDigo Srl si riserva di invalidare in qualsiasi momento la Shopping List.</div>
+        <div class="sl-legal">Promozione individuale, non cumulabile con altre promozioni e non cedibile a terzi. Non utilizzabile sugli articoli in promozione; rilasciata solo ai clienti registrati. Scadenza 18/12/2026. inDigo Srl si riserva di invalidare in qualsiasi momento la Shopping List.</div>
   </section>
-  <div class="foot"><a href="${CONFIG.mainSite}" target="_blank" rel="noopener">www.indigoshop.it</a>${CONFIG.city}</div>`;
+  <div class="foot"><a href="${CONFIG.mainSite}" target="_blank" rel="noopener">www.indigoshop.it</a>${CONFIG.city}</div>
+  <div id="slSheet" class="sl-sheet" onclick="if(event.target===this)this.classList.remove('on')"><div class="sl-pan"><b class="x" onclick="document.getElementById('slSheet').classList.remove('on')">×</b>
+    <h2>In che negozio vuoi ritirarla?</h2>
+    <div class="sl-xg">${st.map(s=>{const w=s.whatsapp?"https://wa.me/"+s.whatsapp+"?text="+encodeURIComponent(SL.text):"#";
+      return `<a href="${w}" target="_blank" rel="noopener"><img src="photos/sl/x-${s.id}.webp" alt="${s.name}"><span>${I.wa}Prenota da ${s.short}</span></a>`;}).join("")}</div>
+    <p class="sl-note">Nel messaggio WhatsApp sostituisci <b>(Nome e Cognome)</b> con i tuoi dati.</p></div></div>`;
 }
 
 /* ========================= ROUTER ========================= */
