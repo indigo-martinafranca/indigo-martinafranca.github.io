@@ -249,6 +249,7 @@ nav.tabs a.reg-tab{color:#128C4B}
 .sl .th img,.sc .cov img{width:100%;height:100%;object-fit:contain;display:block}
 .sc .cov{padding:0;overflow:hidden}
 .hero{height:auto;min-height:200px;padding-top:24px}
+.hero.hc{min-height:250px}.hero.hc h1,.hero.hc p{text-shadow:0 2px 10px rgba(0,0,0,.6)}
 .hero .hlogo{width:92px;height:92px;border-radius:20px;object-fit:cover;border:3px solid rgba(255,255,255,.9);box-shadow:0 8px 20px rgba(0,0,0,.3);margin-bottom:14px}
 .sb .fav{overflow:hidden;padding:0}
 .sb .fav img{width:100%!important;height:100%;object-fit:cover}
@@ -468,35 +469,35 @@ const CONFIG = {
   social: { instagram:"https://www.instagram.com/indigosrl/", facebook:"https://www.facebook.com/indigosrl/", linkedin:"https://www.linkedin.com/company/indigo-surl/" },
 
   stores: [
-    { id:"tnt", theme:["#1A1A1A","#000000"], logo:"__LG_tnt__", logobg:"#010000", mono:"TNT", name:"TNT Jeanswear Research", short:"TNT", since:"dal 1992", tagline:"Jeanswear & Streetwear",
+    { id:"tnt", cover:"photos/tnt/a2.webp", theme:["#1A1A1A","#000000"], logo:"__LG_tnt__", logobg:"#010000", mono:"TNT", name:"TNT Jeanswear Research", short:"TNT", since:"dal 1992", tagline:"Jeanswear & Streetwear",
       color:"linear-gradient(135deg,#000,#2b2b2b)", swatch:"#111111",
       address:"Corso Italia 114/A", phone:"080 480 8285", whatsapp:"393280320384",
       site:"https://www.tntshop.it", brands:"https://www.tntshop.it/it/page/elenco-marche.html",
       instagram:"https://www.instagram.com/tntjeanswearresearch/", facebook:"https://www.facebook.com/tntjeanswearresearch/", linkedin:"https://www.linkedin.com/company/indigo-surl/",
       story:"Dal 1992 TNT Jeanswear Research è il negozio del denim e dello streetwear a Martina Franca. Nato quando il jeanswear era ancora una tendenza alternativa, oggi è il punto di riferimento della Valle d'Itria per chi cerca prodotti di ricerca e uno stile riconoscibile. Due anime: il denim premium, con nuove vestibilità, lavaggi, edizioni limitate e accessori, e lo street style, con brand iconici ed emergenti per chi vuole distinguersi.",
       photos:["photos/tnt/a1.webp","photos/tnt/a2.webp","photos/tnt/01.webp","photos/tnt/03.webp","photos/tnt/04.webp","photos/tnt/05.webp","photos/tnt/06.webp","photos/tnt/07.webp","photos/tnt/08.webp","photos/tnt/09.webp","photos/tnt/10.webp","photos/tnt/11.webp","photos/tnt/12.webp","photos/tnt/13.webp","photos/tnt/14.webp","photos/tnt/15.webp"], satClose:"21:00" },
-    { id:"web", theme:["#6B3E26","#4A2A1A"], logo:"__LG_web__", logobg:"#74432d", mono:"WEB", name:"WEB Masculine Store", short:"WEB", since:"dal 1996", tagline:"Emporio dell'uomo contemporaneo",
+    { id:"web", cover:"photos/web/02.webp", coverPos:"center 72%", theme:["#6B3E26","#4A2A1A"], logo:"__LG_web__", logobg:"#74432d", mono:"WEB", name:"WEB Masculine Store", short:"WEB", since:"dal 1996", tagline:"Emporio dell'uomo contemporaneo",
       color:"linear-gradient(135deg,#3e2318,#8a5236)", swatch:"#74432d",
       address:"Corso Italia 9", phone:"080 483 2494", whatsapp:"393293482069",
       site:"https://www.webmasculinestore.com", brands:"https://www.webmasculinestore.com/it/page/elenco-marche.html",
       instagram:"https://www.instagram.com/webmasculinestore/", facebook:"https://www.facebook.com/WebMasculineStore/", linkedin:"https://www.linkedin.com/company/indigo-surl/",
       story:"Dal 1996 WEB Masculine Store è l'emporio dell'uomo contemporaneo nel cuore di Martina Franca: un luogo pensato per l'uomo di oggi, che vuole vestire con personalità senza rinunciare a comfort e qualità. Lontano dal classico tradizionale, WEB propone uno stile moderno e versatile, dal quotidiano al tempo libero fino alle occasioni speciali: capispalla, maglieria, camicie, denim, calzature e accessori selezionati tra brand italiani e internazionali. Un emporio da vivere con calma, dove ogni stagione si rinnova la proposta e dove trovare consigli su misura per costruire il proprio guardaroba.",
       photos:["photos/web/01.webp","photos/web/02.webp","photos/web/03.webp","photos/web/04.webp","photos/web/05.webp","photos/web/06.webp","photos/web/07.webp","photos/web/08.webp","photos/web/09.webp","photos/web/10.webp","photos/web/11.webp","photos/web/12.webp"], satClose:"21:00" },
-    { id:"glam", theme:["#C97F8B","#A8606C"], logo:"__LG_glam__", logobg:"#eec1c0", name:"pure Glam Boutique", short:"pure Glam", since:"dal 2006", tagline:"Boutique donna",
+    { id:"glam", cover:"photos/glam/01.webp", theme:["#C97F8B","#A8606C"], logo:"__LG_glam__", logobg:"#eec1c0", name:"pure Glam Boutique", short:"pure Glam", since:"dal 2006", tagline:"Boutique donna",
       color:"linear-gradient(135deg,#a86f73,#d39c9c)", swatch:"#c9888c",
       address:"Corso Italia 33", phone:"080 483 9132", whatsapp:"393280150618",
       site:"https://www.indigoshop.it", brands:"https://www.indigoshop.it/it/page/elenco-marche.html",
       instagram:"https://www.instagram.com/pure__glam/", facebook:"https://www.facebook.com/BoutiquepureGlam/", linkedin:"https://www.linkedin.com/company/indigo-surl/",
       story:"Dal 2006 pure Glam Boutique è il punto di riferimento per l'eleganza femminile a Martina Franca. Una boutique pensata per una donna sofisticata, con un tocco sportivo: abbigliamento, scarpe, borse, accessori e underwear dei migliori designer. Outfit per eventi e cerimonie sempre in linea con le tendenze di stagione, proposte casual che non rinunciano a comfort e raffinatezza, e tante idee regalo per ogni occasione.",
       photos:["photos/glam/01.webp","photos/glam/02.webp","photos/glam/03.webp","photos/glam/04.webp","photos/glam/05.webp","photos/glam/06.webp","photos/glam/07.webp","photos/glam/08.webp","photos/glam/09.webp"], satClose:"21:00" },
-    { id:"33", theme:["#B8902F","#8C6B1F"], logo:"__LG_33__", logobg:"#c8aa88", mono:"33", name:"33sneakers", short:"33sneakers", since:"dal 2022", tagline:"Sneakers boutique & accessori",
+    { id:"33", cover:"photos/33/01.webp", theme:["#B8902F","#8C6B1F"], logo:"__LG_33__", logobg:"#c8aa88", mono:"33", name:"33sneakers", short:"33sneakers", since:"dal 2022", tagline:"Sneakers boutique & accessori",
       color:"linear-gradient(135deg,#6b5636,#c9a877)", swatch:"#b39463",
       address:"Via Francesco Albanese 17", phone:"327 395 7687", whatsapp:"393273957687",
       site:"https://www.33sneakers.com", brands:"https://www.33sneakers.com/it/page/elenco-marche.html",
       instagram:"https://www.instagram.com/33sneakers/", facebook:"https://www.facebook.com/profile.php?id=100084322901315", linkedin:"https://www.linkedin.com/company/33sneakers/",
       story:"Dal 2022 33sneakers è la boutique della sneaker a Martina Franca, in tutte le sue anime: sportswear, streetwear e fashion, con cappelli e accessori. Il concept unisce due icone senza tempo: la sneaker, voce della strada, e il vinile, simbolo di musica e cultura. Collezioni selezionate stagione dopo stagione e capsule in edizione limitata, con 6 vetrine in pieno centro. Rivenditore ufficiale di ogni marchio proposto.",
       photos:["photos/33/01.webp","photos/33/02.webp","photos/33/03.webp","photos/33/04.webp","photos/33/05.webp","photos/33/06.webp","photos/33/07.webp","photos/33/08.webp","photos/33/09.webp","photos/33/10.webp","photos/33/11.webp","photos/33/12.webp","photos/33/13.webp","photos/33/14.webp"], satClose:"20:30" },
-    { id:"indigo", logo:"__LG_indigo__", logobg:"#bc874e", name:"inDigo After & Essential", short:"After & Essential", since:"", tagline:"Moda essenziale uomo e donna",
+    { id:"indigo", cover:"photos/indigo/01.webp", coverPos:"center 30%", logo:"__LG_indigo__", logobg:"#bc874e", name:"inDigo After & Essential", short:"After & Essential", since:"", tagline:"Moda essenziale uomo e donna",
       color:"linear-gradient(135deg,#8a4a12,#d9821f)", swatch:"#c06a18",
       address:"Corso Italia 41", phone:"080 483 8159", whatsapp:"393288789121",
       site:"https://www.indigoshop.it", brands:"https://www.indigoshop.it/it/page/elenco-marche.html",
@@ -748,7 +749,7 @@ function vStore(id){
   const photos=s.photos.length?s.photos.map(p=>`<img src="${p}" alt="${s.name}" loading="lazy" decoding="async">`).join(""):
     [1,2,3].map(()=>`<div class="ph"><div>${I.camera}Foto del negozio<br>in arrivo</div></div>`).join("");
   return `${navbar()}
-  <div class="hero" style="background:${s.color}">
+  <div class="hero${s.cover?" hc":""}" style="background:${s.cover?`linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.85) 100%),url(${s.cover}) ${s.coverPos||"center"}/cover no-repeat,`:""}${s.color}">
     <span class="pill"><span class="dot ${x.open?"on":"off"}"></span>${x.text}</span>
     <img class="hlogo" src="${s.logo}" alt="${s.name}">
     <h1>${s.name}</h1><p>${[s.tagline,s.since].filter(Boolean).join(" · ")}</p>
