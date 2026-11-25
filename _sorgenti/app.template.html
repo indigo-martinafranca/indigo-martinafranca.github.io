@@ -467,6 +467,7 @@ box-shadow:0 0 0 3px #F3D27A,0 8px 22px rgba(179,32,47,.35);animation:slp 1.6s e
   .view:has(> .hero) > :first-child,.view:has(> .hero) > .hero,.view:has(> .hero) > .foot{grid-column:1/-1}
   .view:has(> .hero) > section:has(.story){grid-column:2;grid-row:3 / span 30}
   .hero.hc{min-height:340px}
+  .hero.hc[style*="--cpw"]{background-position:0 0,var(--cpw)!important}
   .story .gal{display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible}
   .story .gal img{width:100%;max-width:none;height:230px;object-fit:cover}
   .sl-gal img{height:420px}
@@ -503,7 +504,7 @@ const CONFIG = {
   social: { instagram:"https://www.instagram.com/indigosrl/", facebook:"https://www.facebook.com/indigosrl/", linkedin:"https://www.linkedin.com/company/indigo-surl/" },
 
   stores: [
-    { id:"tnt", cover:"photos/tnt/a2.webp", theme:["#1A1A1A","#000000"], logo:"__LG_tnt__", logobg:"#010000", mono:"TNT", name:"TNT Jeanswear Research", short:"TNT", since:"dal 1992", tagline:"Jeanswear & Streetwear",
+    { id:"tnt", cover:"photos/tnt/a2.webp", coverPosWide:"center 12%", theme:["#1A1A1A","#000000"], logo:"__LG_tnt__", logobg:"#010000", mono:"TNT", name:"TNT Jeanswear Research", short:"TNT", since:"dal 1992", tagline:"Jeanswear & Streetwear",
       color:"linear-gradient(135deg,#000,#2b2b2b)", swatch:"#111111",
       address:"Corso Italia 114/A", phone:"080 480 8285", whatsapp:"393280320384",
       site:"https://www.tntshop.it", brands:"https://www.tntshop.it/it/page/elenco-marche.html",
@@ -783,7 +784,7 @@ function vStore(id){
   const photos=s.photos.length?s.photos.map(p=>`<img src="${p}" alt="${s.name}" loading="lazy" decoding="async">`).join(""):
     [1,2,3].map(()=>`<div class="ph"><div>${I.camera}Foto del negozio<br>in arrivo</div></div>`).join("");
   return `${navbar()}
-  <div class="hero${s.cover?" hc":""}" style="background:${s.cover?`linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.85) 100%),url(${s.cover}) ${s.coverPos||"center"}/cover no-repeat,`:""}${s.color}">
+  <div class="hero${s.cover?" hc":""}" style="${s.coverPosWide?`--cpw:${s.coverPosWide};`:""}background:${s.cover?`linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.85) 100%),url(${s.cover}) ${s.coverPos||"center"}/cover no-repeat,`:""}${s.color}">
     <span class="pill"><span class="dot ${x.open?"on":"off"}"></span>${x.text}</span>
     <img class="hlogo" src="${s.logo}" alt="${s.name}">
     <h1>${s.name}</h1><p>${[s.tagline,s.since].filter(Boolean).join(" · ")}</p>
