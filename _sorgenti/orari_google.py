@@ -2,7 +2,7 @@
 Gira in automatico con GitHub Actions. Chiave in GitHub Secret GOOGLE_PLACES_KEY (mai nel codice)."""
 import json, os, sys, urllib.request, datetime
 KEY=os.environ.get("GOOGLE_PLACES_KEY")
-if not KEY: sys.exit("Manca GOOGLE_PLACES_KEY")
+if not KEY: print("Chiave non impostata: niente da fare"); sys.exit(0)
 STORES=json.load(open(os.path.join(os.path.dirname(__file__),"negozi_google.json")))
 def req(url,body=None,mask="*"):
   h={"X-Goog-Api-Key":KEY,"X-Goog-FieldMask":mask,"Content-Type":"application/json"}
