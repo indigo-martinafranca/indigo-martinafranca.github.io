@@ -157,6 +157,16 @@ summary::-webkit-details-marker{display:none}
 .li span{font-size:12.5px;color:var(--muted)}
 .li .r{margin-left:auto;color:var(--blue);font-weight:800;font-size:13px;white-space:nowrap}
 
+.acad{display:block;background:#061D25;border-radius:20px;overflow:hidden;color:#fff;box-shadow:0 8px 22px rgba(6,29,37,.3)}
+.acad .acl{padding:18px 30px 6px}.acad .acl img{width:100%;display:block}
+.acad .act2{padding:8px 18px 18px;text-align:center}.acad b{display:block;font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:#22A8D0}
+.acad span{display:block;font-size:13.5px;opacity:.88;margin-top:6px;line-height:1.4}.acad .go2{display:inline-block;margin-top:14px;background:#22A8D0;color:#fff;font-weight:800;opacity:1;padding:10px 22px;border-radius:99px;font-size:14px}
+.ac-top{background:#061D25!important;text-align:center;padding-top:14px}.ac-top img{width:78%;max-width:360px}.ac-top p{color:#22A8D0;font-weight:800;letter-spacing:1.6px;font-size:12px;margin-top:6px}
+.ac-b{background:var(--card);border-radius:18px;padding:16px;margin-bottom:12px;box-shadow:0 1px 0 var(--line)}
+.ac-b h3{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;margin-bottom:8px}.ac-b h3 i{font-style:normal;flex:none;width:28px;height:28px;border-radius:50%;background:#061D25;color:#22A8D0;display:grid;place-items:center;font-size:14px}
+.ac-b p{font-size:14px;line-height:1.5;margin-top:6px;color:#333}.ac-b .muted{color:#888;font-size:12.5px}
+.ac-step{border-left:3px solid #22A8D0;padding:4px 0 4px 12px;margin-top:14px}.ac-step .n{font-size:11px;font-weight:800;letter-spacing:1.4px;color:#22A8D0}.ac-step h4{font-size:15px;font-weight:800;margin:2px 0}
+.ac-step p{font-size:13.5px;margin-top:2px}.ac-step ul{margin:8px 0 0 18px;font-size:13.5px;line-height:1.55}
 .job{display:flex;align-items:center;gap:12px;background:linear-gradient(140deg,#00315A,#00447A 60%,#2F6FA8);color:#fff;border-radius:20px;padding:16px;box-shadow:0 8px 22px rgba(0,49,90,.22)}
 .job .ic{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.15);display:grid;place-items:center;flex:none}.job .ic svg{width:24px;height:24px}
 .job b{display:block;font-size:18px;font-weight:800}.job span{font-size:13px;opacity:.9;font-weight:600}.job .go{margin-left:auto;font-size:26px;opacity:.8}
@@ -640,7 +650,7 @@ function hoursTable(store){
 }
 
 /* ===================== AGGIORNAMENTO AUTOMATICO ===================== */
-const APP_VERSION="20261127114212";
+const APP_VERSION="20261127120336";
 let lastCheck=0, updating=false;
 async function checkUpdate(force){
   if(updating) return false;
@@ -989,6 +999,10 @@ function vLavora(){
     <div class="csrow" style="margin-bottom:12px"><a class="jb m" style="flex:1;margin:0" href="${ml}" target="_blank" rel="noopener">${I.mail}<div><b>Invia una mail</b><span>Inviaci il tuo curriculum e una presentazione</span><span style="opacity:.75">${mail}</span></div></a><button class="cpy" style="width:66px;box-shadow:0 1px 0 var(--line)" data-copy="${mail}" data-msg="Email copiata" aria-label="Copia email">${I.copy}<small>Copia</small></button></div>
     <a class="jb w" href="${wa}" target="_blank" rel="noopener">${I.wa}<div><b>Scrivici su WhatsApp</b><span>Inviaci il tuo curriculum e una presentazione</span></div></a>
   </section>
+  <section>
+    <a class="acad" href="#academy"><div class="acl"><img src="photos/academy.webp" alt="inDigo Academy"></div>
+      <div class="act2"><b>Training and placement for retail</b><span>Il percorso di formazione per diventare Personal Shopper nei nostri negozi.</span><span class="go2">Scopri di più →</span></div></a>
+  </section>
   <div class="foot"><a href="${CONFIG.mainSite}" target="_blank" rel="noopener">www.indigoshop.it</a>${CONFIG.city}</div>`;
 }
 
@@ -1024,8 +1038,43 @@ function vShopping(){
     <p class="sl-note">Nel messaggio WhatsApp sostituisci <b>(Nome e Cognome)</b> con i tuoi dati.</p></div></div>`;
 }
 
+function vAcademy(){
+  const mail="job@indigoshop.it";
+  const ml="mailto:"+mail+"?subject="+encodeURIComponent("Candidatura inDigo Academy")+"&body="+encodeURIComponent("Ciao! Vorrei candidarmi all'inDigo Academy. Vi invio il mio curriculum.\n\n(Allega il tuo CV)");
+  const step=(n,t,s,l)=>`<div class="ac-step"><span class="n">STEP ${n}</span><h4>${t}</h4><p>${s}</p><ul>${l.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
+  return `${navbar()}<header class="sub-top ac-top"><img src="photos/academy.webp" alt="inDigo Academy"><p>TRAINING AND PLACEMENT FOR RETAIL</p></header>
+  <section class="ac">
+    <div class="ac-b"><h3><i>1</i>Che cos'è l'inDigo Academy?</h3>
+      <p>L'inDigo Academy è un progetto di formazione e crescita professionale rivolto ai giovani che desiderano intraprendere una carriera come <b>Personal Shopper</b> nel settore del Fashion Retail.</p>
+      <p>Offriamo alle nuove generazioni l'opportunità di partecipare a corsi di formazione e apprendimento finalizzati a favorire l'inserimento professionale all'interno dei nostri punti vendita.</p></div>
+    <div class="ac-b"><h3><i>2</i>Che tipo di formazione offre?</h3>
+      <p>L'inDigo Academy propone un percorso composto da diversi incontri formativi, suddivisi in <b>tre step</b>.</p>
+      <p>Ogni incontro sarà diretto dal CEO dell'azienda, che vanta un'esperienza trentennale nel settore, affiancato dal responsabile delle Risorse Umane.</p></div>
+    <div class="ac-b"><h3><i>3</i>Gli argomenti del percorso formativo</h3>
+      ${step(1,"Preparazione al mondo del lavoro","Acquisizione delle competenze fondamentali per affrontare il mondo del lavoro al termine del percorso scolastico.",["Approccio e inserimento nel mondo del lavoro","Metodo di lavoro","Passione per il settore moda"])}
+      ${step(2,"Conoscenza aziendale, brand e prodotti","Incontri mirati e specifici per approfondire la conoscenza dell'azienda, arricchire il proprio bagaglio professionale ed entrare nella realtà lavorativa.",["Conoscenza dell'azienda inDigo","Conoscenza dei brand partner","Acquisizione delle nozioni fondamentali sui prodotti commercializzati"])}
+      ${step(3,"Tecniche di vendita e marketing","Perfezionamento della preparazione professionale del venditore, in vista dell'inserimento nel punto vendita.",["Metodo e approccio alla vendita con il cliente","Strategie di vendita","Consigli e tecniche di vendita","Strategie di marketing"])}
+    </div>
+    <div class="ac-b"><h3><i>4</i>Test in Store – Esperienza pratica</h3>
+      <p>Una volta acquisita la necessaria preparazione teorica, seguirà un'esperienza pratica all'interno di uno dei punti vendita, durante la quale il candidato potrà mettere alla prova le competenze acquisite.</p>
+      <p>Il test sarà supervisionato dai responsabili del punto vendita, che affiancheranno il candidato durante questa prima esperienza professionale.</p>
+      <p>La durata del test sarà concordata con i responsabili e <b>l'esperienza sarà retribuita</b>.</p></div>
+    <div class="ac-b"><h3><i>5</i>Contratto e inserimento professionale</h3>
+      <p>In caso di esito positivo del Test in Store, verranno discussi insieme al candidato i dettagli contrattuali per l'inserimento in azienda.</p>
+      <p>inDigo riconosce il valore della meritocrazia e si impegna a fornire gli strumenti necessari per un percorso di crescita continua, personale e professionale.</p>
+      <p>L'obiettivo è valorizzare le risorse umane, arricchire le loro competenze e favorire il raggiungimento di importanti traguardi all'interno dell'azienda.</p></div>
+    <div class="ac-b ac-cta"><h3><i>6</i>Come candidarsi?</h3>
+      <p>Invia il tuo Curriculum Vitae al seguente indirizzo e-mail:</p>
+      <div class="csrow" style="margin:10px 0 12px"><a class="jb m" style="flex:1;margin:0" href="${ml}" target="_blank" rel="noopener">${I.mail}<div><b>${mail}</b><span>Invia il tuo curriculum</span></div></a><button class="cpy" data-copy="${mail}" data-msg="Email copiata">${I.copy}<small>Copia</small></button></div>
+      <p>Il nostro reparto Risorse Umane esaminerà il curriculum e valuterà la candidatura.</p>
+      <p>A seguito dell'invio, riceverai un'e-mail automatica di conferma. In caso di interesse, un nostro referente ti contatterà tramite e-mail o telefono, indicativamente entro tre settimane.</p>
+      <p class="muted">Le tempistiche di risposta alle candidature possono variare.</p></div>
+  </section>
+  <div class="foot"><a href="${CONFIG.mainSite}" target="_blank" rel="noopener">www.indigoshop.it</a>${CONFIG.city}</div>`;
+}
+
 /* ========================= ROUTER ========================= */
-const ROUTES={home:["Home",I.home,vHome],negozi:["Negozi",I.pin,vNegozi],registrati:["Registrati",I.user,vReg],calendario:["Calendario",I.cal,vCalendario],shop:["Shop",I.bag,vShop],contatti:["Contatti",I.chat,vContatti],lavora:["Lavora con noi",I.brief,vLavora]};
+const ROUTES={home:["Home",I.home,vHome],negozi:["Negozi",I.pin,vNegozi],registrati:["Registrati",I.user,vReg],calendario:["Calendario",I.cal,vCalendario],shop:["Shop",I.bag,vShop],contatti:["Contatti",I.chat,vContatti],lavora:["Lavora con noi",I.brief,vLavora],academy:["inDigo Academy",I.brief,vAcademy]};
 if(slOn()) ROUTES.shopping=["Shopping List",I.gift||I.bag,vShopping];
 const TABS=["home","negozi","WA","shop","contatti"];
 let keepScroll=false, pendingStore=null, depth=0, goingBack=false;
