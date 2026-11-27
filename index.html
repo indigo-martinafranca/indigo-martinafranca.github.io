@@ -607,12 +607,21 @@ function romeNow(){
 const iso=d=>d.toISOString().slice(0,10);
 const addDays=(d,n)=>new Date(d.getTime()+n*864e5);
 const toMin=s=>{const[h,m]=s.split(":");return +h*60+ +m};
+let GH=null; // orari dai profili Google (hours.json, aggiornato in automatico)
 function slotsFor(d,store){
-  const k=iso(d);
+  const k=iso(d), wd=d.getUTCDay();
+  if(!store && GH){ const s0=CONFIG.stores.find(s=>GH.stores&&GH.stores[s.id]); if(s0) store=s0; }
+  const g=store&&GH&&GH.stores&&GH.stores[store.id];
+  if(g&&g.special&&g.special[k]) return g.special[k];
   if(CONFIG.special[k]) return CONFIG.special[k];
-  const wd=d.getUTCDay();
-  if(wd===0){const s=CONFIG.sundayOpen; return (k>=s.from&&k<=s.to)?s.slots:[];}
+  if(wd===0){const s=CONFIG.sundayOpen; if(k>=s.from&&k<=s.to) return s.slots;}
+  if(g&&g.week&&g.week[wd]) return g.week[wd];
+  if(wd===0) return [];
   return CONFIG.week[wd].map(([a,b])=>[a,b==="SAT"?(store?store.satClose:"21:00"):b]);
+}
+async function loadGoogleHours(){
+  try{ const r=await fetch("hours.json?t="+Date.now(),{cache:"no-store"}); if(!r.ok) return; const j=await r.json();
+    if(j&&j.stores&&Object.keys(j.stores).length){ GH=j; keepScroll=true; render(); } }catch(e){}
 }
 function status(store){
   const {date,min}=romeNow();
@@ -631,7 +640,7 @@ function hoursTable(store){
 }
 
 /* ===================== AGGIORNAMENTO AUTOMATICO ===================== */
-const APP_VERSION="20261125114052";
+const APP_VERSION="20261127102241";
 let lastCheck=0, updating=false;
 async function checkUpdate(force){
   if(updating) return false;
@@ -1059,6 +1068,7 @@ function bind(){
 window.addEventListener("hashchange",async()=>{ if(goingBack){goingBack=false;depth=Math.max(0,depth-1);} else depth++; if(await checkUpdate(false)) return; render(); });
 render();
 syncGoogle();
+loadGoogleHours();
 setInterval(()=>{if(!document.querySelector("details[open]"))render()},60000);
 </script>
 <script>document.addEventListener('click',e=>{const g=e.target.closest('.gal img');if(g){const d=document.createElement('div');d.className='lbx';d.innerHTML='<b>×</b><img src="'+g.src+'" alt="">';d.onclick=()=>d.remove();document.body.appendChild(d)}});</script>

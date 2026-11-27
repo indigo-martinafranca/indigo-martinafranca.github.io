@@ -1,0 +1,22 @@
+name: Orari Google negozi
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Leggi orari dai profili Google
+        env:
+          GOOGLE_PLACES_KEY: ${{ secrets.GOOGLE_PLACES_KEY }}
+        run: python3 _sorgenti/orari_google.py
+      - name: Salva se cambiati
+        run: |
+          git config user.name "orari-bot"
+          git config user.email "orari-bot@users.noreply.github.com"
+          git add hours.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "Orari aggiornati da Google" && git push)
