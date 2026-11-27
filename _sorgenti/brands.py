@@ -23,7 +23,7 @@ B={"glam":build(glam,"https://www.indigoshop.it",""),"tnt":build(tnt,"https://ww
 
 # Glam: brand aggiunti (link provvisori alla ricerca indigoshop finché non ho gli ID delle pagine brand)
 from urllib.parse import quote
-GLAM_EXTRA=[("After Label","AFTER LABEL"),("Alexander Smith","ALEXANDER SMITH"),("Alibi","ALIBI"),("Aniye By","ANIYE BY"),("Blauer","BLAUER"),("Café Noir","CAFE' NOIR"),("Sword 6.6.44","SWORD 6.6.44"),("MC2 Saint Barth","SAINT BARTH"),("Twenty Fourhaitch","Twenty fourhaitch"),("Berwich","BERWICH"),("Met","MET")]
+GLAM_EXTRA=[("After Label","AFTER LABEL"),("Alexander Smith","ALEXANDER SMITH"),("Alibi","ALIBI"),("Aniye By","ANIYE BY"),("Blauer","BLAUER"),("Café Noir","CAFE' NOIR"),("Sword 6.6.44","SWORD 6.6.44"),("MC2 Saint Barth","SAINT BARTH"),("Twenty Fourhaitch","Twenty fourhaitch"),("Met","MET")]
 GLAM_URLS={}
 B["glam"]=sorted(B["glam"]+[{"n":n,"u":GLAM_URLS.get(n,"https://www.indigoshop.it/it/?keyword="+quote(k)),"l":None} for n,k in GLAM_EXTRA],key=lambda x:x['n'].lower())
 json.dump(B,open('brands.json','w'),ensure_ascii=False)
